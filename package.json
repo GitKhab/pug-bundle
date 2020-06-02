@@ -5,5 +5,8 @@
   "bugs": {
     "url": "https://github.com/GitKhab/pug-bundle/issues"
   },
-  "homepage": "https://github.com/GitKhab/pug-bundle"
+  "homepage": "https://github.com/GitKhab/pug-bundle",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }
