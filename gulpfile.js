@@ -43,6 +43,11 @@ const js = {
   dist: 'dist/_kit/js/'
 };
 
+const img = {
+  src: 'src/_kit/img/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF}',
+  dist: 'dist/_kit/img/'
+};
+
 
 // =============================================================================
 // представления
