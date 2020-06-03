@@ -104,6 +104,10 @@ lazyRequireTask('build:img', './gulp-tasks/build/img', {
   dist: dist
 });
 
+lazyRequireTask('clean:img', './gulp-tasks/clean', {
+  clean: img.dist
+});
+
 
 // =============================================================================
 // очистка всей сборки
