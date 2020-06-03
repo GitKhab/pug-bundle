@@ -8,6 +8,7 @@
   "homepage": "https://github.com/GitKhab/pug-bundle",
   "devDependencies": {
     "autoprefixer": "^9.8.0",
+    "cssnano": "^4.1.10",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-cached": "^1.1.1",
