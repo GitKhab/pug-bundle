@@ -29,3 +29,14 @@ const views = {
   templates: 'src/_kit/templates/**/*.pug',
   dist: 'dist/**/index.html'
 };
+
+
+// =============================================================================
+// представления
+// =============================================================================
+
+lazyRequireTask('build:views', './gulp-tasks/build/views', {
+  base: src,
+  src: views.src,
+  dist: dist
+});
