@@ -38,6 +38,11 @@ const css = {
   dist: 'dist/_kit/css/'
 };
 
+const js = {
+  src: 'src/_kit/js/**/*.js',
+  dist: 'dist/_kit/js/'
+};
+
 
 // =============================================================================
 // представления
@@ -70,6 +75,21 @@ lazyRequireTask('clean:css', './gulp-tasks/clean', {
 
 
 // =============================================================================
+// скрипты
+// =============================================================================
+
+lazyRequireTask('build:js', './gulp-tasks/build/js', {
+  base: src,
+  src: js.src,
+  dist: js.dist
+});
+
+lazyRequireTask('clean:js', './gulp-tasks/clean', {
+  clean: js.dist
+});
+
+
+// =============================================================================
 // очистка всей сборки
 // =============================================================================
 
@@ -95,6 +115,12 @@ gulp.task('watch', function() {
         remember.forget('css', path.resolve(filepath));
       });
 
+  gulp.watch(js.src, gulp.series('build:js'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['js'][path.resolve(filepath)];
+        remember.forget('js', path.resolve(filepath));
+      });
+
 });
 
 
@@ -102,6 +128,8 @@ gulp.task('watch', function() {
 // варианты сборки
 // =============================================================================
 
-gulp.task('default', gulp.series('clean', 'build:views', 'build:css', 'watch'));
+gulp.task('default', gulp.series('clean', 'build:views', 'build:css',
+    'build:js', 'watch'));
 
-gulp.task('build', gulp.series('clean', 'build:views', 'build:css'));
+gulp.task('build', gulp.series('clean', 'build:views', 'build:css',
+    'build:js'));
