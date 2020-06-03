@@ -44,3 +44,17 @@ lazyRequireTask('build:views', './gulp-tasks/build/views', {
 lazyRequireTask('clean:views', './gulp-tasks/clean', {
   clean: views.dist
 });
+
+
+// =============================================================================
+// отслеживание изменений в исходных файлах
+// =============================================================================
+
+gulp.task('watch', function() {
+
+  gulp.watch([
+    views.src,
+    views.templates
+  ], gulp.series('build:views'))
+
+});
