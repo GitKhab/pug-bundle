@@ -141,6 +141,11 @@ gulp.task('watch', function() {
         remember.forget('js', path.resolve(filepath));
       });
 
+  gulp.watch(img.src, gulp.series('build:img'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['img'][path.resolve(filepath)];
+      });
+
 });
 
 
