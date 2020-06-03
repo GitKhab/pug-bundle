@@ -43,6 +43,11 @@ const js = {
   dist: 'dist/_kit/js/'
 };
 
+const img = {
+  src: 'src/_kit/img/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF}',
+  dist: 'dist/_kit/img/'
+};
+
 
 // =============================================================================
 // представления
@@ -90,6 +95,21 @@ lazyRequireTask('clean:js', './gulp-tasks/clean', {
 
 
 // =============================================================================
+// изображения
+// =============================================================================
+
+lazyRequireTask('build:img', './gulp-tasks/build/img', {
+  base: src,
+  src: img.src,
+  dist: dist
+});
+
+lazyRequireTask('clean:img', './gulp-tasks/clean', {
+  clean: img.dist
+});
+
+
+// =============================================================================
 // очистка всей сборки
 // =============================================================================
 
@@ -121,6 +141,11 @@ gulp.task('watch', function() {
         remember.forget('js', path.resolve(filepath));
       });
 
+  gulp.watch(img.src, gulp.series('build:img'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['img'][path.resolve(filepath)];
+      });
+
 });
 
 
@@ -129,7 +154,7 @@ gulp.task('watch', function() {
 // =============================================================================
 
 gulp.task('default', gulp.series('clean', 'build:views', 'build:css',
-    'build:js', 'watch'));
+    'build:js', 'build:img', 'watch'));
 
 gulp.task('build', gulp.series('clean', 'build:views', 'build:css',
-    'build:js'));
+    'build:js', 'build:img'));

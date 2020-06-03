@@ -19,11 +19,15 @@
     "gulp-debug": "^4.0.0",
     "gulp-header": "^2.0.9",
     "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-notify": "^3.2.0",
     "gulp-postcss": "^8.0.0",
     "gulp-pug": "^4.0.1",
     "gulp-remember": "^1.0.1",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "imagemin-jpeg-recompress": "^7.0.0",
+    "imagemin-pngquant": "^9.0.0",
     "yargs": "^15.3.1"
   }
 }
