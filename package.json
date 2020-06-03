@@ -26,6 +26,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
     "imagemin-jpeg-recompress": "^7.0.0",
+    "imagemin-pngquant": "^9.0.0",
     "yargs": "^15.3.1"
   }
 }
