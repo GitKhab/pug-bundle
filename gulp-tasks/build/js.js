@@ -9,6 +9,7 @@ const argv = require('yargs').argv;
 const uglify = require('gulp-uglify');
 const remember = require('gulp-remember');
 const concat = require('gulp-concat');
+const header = require('gulp-header');
 
 module.exports = function(options) {
 
@@ -25,6 +26,7 @@ module.exports = function(options) {
         .pipe(gulpIf(argv.prod, uglify()))
         .pipe(remember('js'))
         .pipe(gulpIf(argv.prod, concatPreset.prod, concatPreset.dev))
+        .pipe(header('"use strict";'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(options.dist));
   };
