@@ -40,3 +40,7 @@ lazyRequireTask('build:views', './gulp-tasks/build/views', {
   src: views.src,
   dist: dist
 });
+
+lazyRequireTask('clean:views', './gulp-tasks/clean', {
+  clean: views.dist
+});
