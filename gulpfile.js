@@ -1,6 +1,9 @@
 'use strict';
 
 const gulp = require('gulp');
+const cache = require('gulp-cached');
+const remember = require('gulp-remember');
+const path = require('path');
 
 
 // =============================================================================
@@ -85,6 +88,12 @@ gulp.task('watch', function() {
     views.src,
     views.templates
   ], gulp.series('build:views'))
+
+  gulp.watch(css.src, gulp.series('build:css'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['css'][path.resolve(filepath)];
+        remember.forget('css', path.resolve(filepath));
+      });
 
 });
 
