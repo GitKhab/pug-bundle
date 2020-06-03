@@ -115,6 +115,12 @@ gulp.task('watch', function() {
         remember.forget('css', path.resolve(filepath));
       });
 
+  gulp.watch(js.src, gulp.series('build:js'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['js'][path.resolve(filepath)];
+        remember.forget('js', path.resolve(filepath));
+      });
+
 });
 
 
