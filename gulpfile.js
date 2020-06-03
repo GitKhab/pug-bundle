@@ -84,6 +84,10 @@ lazyRequireTask('build:js', './gulp-tasks/build/js', {
   dist: js.dist
 });
 
+lazyRequireTask('clean:js', './gulp-tasks/clean', {
+  clean: js.dist
+});
+
 
 // =============================================================================
 // очистка всей сборки
