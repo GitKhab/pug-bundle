@@ -124,6 +124,10 @@ lazyRequireTask('build:svg', './gulp-tasks/build/svg', {
   dist: dist
 });
 
+lazyRequireTask('clean:svg', './gulp-tasks/clean', {
+  clean: svg.dist
+});
+
 
 // =============================================================================
 // очистка всей сборки
