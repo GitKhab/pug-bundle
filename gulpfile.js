@@ -61,6 +61,10 @@ lazyRequireTask('build:css', './gulp-tasks/build/css', {
   dist: css.dist
 });
 
+lazyRequireTask('clean:css', './gulp-tasks/clean', {
+  clean: css.dist
+});
+
 
 // =============================================================================
 // очистка всей сборки
