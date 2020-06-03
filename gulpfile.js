@@ -23,3 +23,9 @@ function lazyRequireTask(taskName, path, options) {
 
 const src = 'src/';
 const dist = 'dist/';
+
+const views = {
+  src: 'src/**/index.pug',
+  templates: 'src/_kit/templates/**/*.pug',
+  dist: 'dist/**/index.html'
+};
