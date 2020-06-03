@@ -128,6 +128,8 @@ gulp.task('watch', function() {
 // варианты сборки
 // =============================================================================
 
-gulp.task('default', gulp.series('clean', 'build:views', 'build:css', 'watch'));
+gulp.task('default', gulp.series('clean', 'build:views', 'build:css',
+    'build:js', 'watch'));
 
-gulp.task('build', gulp.series('clean', 'build:views', 'build:css'));
+gulp.task('build', gulp.series('clean', 'build:views', 'build:css',
+    'build:js'));
