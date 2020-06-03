@@ -67,3 +67,12 @@ gulp.task('watch', function() {
   ], gulp.series('build:views'))
 
 });
+
+
+// =============================================================================
+// варианты сборки
+// =============================================================================
+
+gulp.task('default', gulp.series('clean', 'build:views', 'watch'));
+
+gulp.task('build', gulp.series('clean', 'build:views'));
