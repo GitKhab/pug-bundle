@@ -87,7 +87,7 @@ gulp.task('watch', function() {
   gulp.watch([
     views.src,
     views.templates
-  ], gulp.series('build:views'))
+  ], gulp.series('build:views'));
 
   gulp.watch(css.src, gulp.series('build:css'))
       .on('unlink', function(filepath) {
