@@ -7,9 +7,18 @@
   },
   "homepage": "https://github.com/GitKhab/pug-bundle",
   "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "cssnano": "^4.1.10",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
+    "gulp-cached": "^1.1.1",
+    "gulp-concat": "^2.6.1",
     "gulp-debug": "^4.0.0",
-    "gulp-pug": "^4.0.1"
+    "gulp-if": "^3.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-remember": "^1.0.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "yargs": "^15.3.1"
   }
 }

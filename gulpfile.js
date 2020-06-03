@@ -1,6 +1,9 @@
 'use strict';
 
 const gulp = require('gulp');
+const cache = require('gulp-cached');
+const remember = require('gulp-remember');
+const path = require('path');
 
 
 // =============================================================================
@@ -30,6 +33,11 @@ const views = {
   dist: 'dist/**/index.html'
 };
 
+const css = {
+  src: 'src/_kit/css/**/*.css',
+  dist: 'dist/_kit/css/'
+};
+
 
 // =============================================================================
 // представления
@@ -43,6 +51,21 @@ lazyRequireTask('build:views', './gulp-tasks/build/views', {
 
 lazyRequireTask('clean:views', './gulp-tasks/clean', {
   clean: views.dist
+});
+
+
+// =============================================================================
+// стили
+// =============================================================================
+
+lazyRequireTask('build:css', './gulp-tasks/build/css', {
+  base: src,
+  src: css.src,
+  dist: css.dist
+});
+
+lazyRequireTask('clean:css', './gulp-tasks/clean', {
+  clean: css.dist
 });
 
 
@@ -66,6 +89,12 @@ gulp.task('watch', function() {
     views.templates
   ], gulp.series('build:views'))
 
+  gulp.watch(css.src, gulp.series('build:css'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['css'][path.resolve(filepath)];
+        remember.forget('css', path.resolve(filepath));
+      });
+
 });
 
 
@@ -73,6 +102,6 @@ gulp.task('watch', function() {
 // варианты сборки
 // =============================================================================
 
-gulp.task('default', gulp.series('clean', 'build:views', 'watch'));
+gulp.task('default', gulp.series('clean', 'build:views', 'build:css', 'watch'));
 
-gulp.task('build', gulp.series('clean', 'build:views'));
+gulp.task('build', gulp.series('clean', 'build:views', 'build:css'));
