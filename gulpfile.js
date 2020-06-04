@@ -225,7 +225,8 @@ gulp.task('watch', function() {
 // =============================================================================
 
 gulp.task('default', gulp.series('clean', 'build:views', 'build:css',
-    'build:js', 'build:img', 'build:svg', 'build:assets', 'watch'));
+    'build:js', 'build:img', 'build:svg', 'build:assets', 'build:server',
+    'watch'));
 
 gulp.task('build', gulp.series('clean', 'build:views', 'build:css',
-    'build:js', 'build:img', 'build:svg', 'build:assets'));
+    'build:js', 'build:img', 'build:svg', 'build:assets', 'build:server'));
