@@ -191,6 +191,11 @@ gulp.task('watch', function() {
         delete cache.caches['svg'][path.resolve(filepath)];
       });
 
+  gulp.watch(assets.src, gulp.series('build:assets'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['assets'][path.resolve(filepath)];
+      });
+
 });
 
 
