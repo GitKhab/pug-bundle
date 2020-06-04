@@ -1,0 +1,13 @@
+extends _kit/templates/layout
+
+block head__title
+    title Homepage
+
+block main
+    .main__text Homepage main content
+
+block body__script
+    script.
+      document.addEventListener('DOMContentLoaded', function() {
+        showPageTitle();
+      });

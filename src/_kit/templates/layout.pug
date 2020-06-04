@@ -1,0 +1,30 @@
+include cache-control
+
+doctype html
+html.html(lang="en")
+    head
+        block head__meta_charset
+            meta(charset="utf-8")
+        block head__meta_viewport
+            meta(name="viewport", content="width=device-width, initial-scale=1")
+        block head__title
+            title Oops, missing title
+        block head__link
+            link(rel="stylesheet" href=`_kit/css/styles.css${cacheControl}`)
+        block head__script
+            script(defer src=`_kit/js/scripts.js${cacheControl}`)
+    body.body
+        .body__inner
+            header.header
+                .header__inner
+                    block header
+                        h1.header__title Header
+            main.main
+                .main__inner
+                    block main
+                        .main__text Main
+        footer.footer
+            .footer__inner
+                block footer
+                    .footer__text Footer
+        block body__script

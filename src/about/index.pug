@@ -1,0 +1,19 @@
+extends ../_kit/templates/layout
+
+block head__title
+    title About
+
+block head__link
+    link(rel="stylesheet" href=`../_kit/css/styles.css${cacheControl}`)
+
+block head__script
+    script(defer src=`../_kit/js/scripts.js${cacheControl}`)
+
+block main
+    .main__text "About" page main content
+
+block body__script
+    script.
+      document.addEventListener('DOMContentLoaded', function() {
+        showPageTitle();
+      });
