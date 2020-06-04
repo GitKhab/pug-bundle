@@ -204,7 +204,7 @@ gulp.task('watch', function() {
 // =============================================================================
 
 gulp.task('default', gulp.series('clean', 'build:views', 'build:css',
-    'build:js', 'build:img', 'build:svg', 'watch'));
+    'build:js', 'build:img', 'build:svg', 'build:assets', 'watch'));
 
 gulp.task('build', gulp.series('clean', 'build:views', 'build:css',
-    'build:js', 'build:img', 'build:svg'));
+    'build:js', 'build:img', 'build:svg', 'build:assets'));
