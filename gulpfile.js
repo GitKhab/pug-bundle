@@ -58,6 +58,11 @@ const assets = {
   dist: 'dist/_kit/assets/'
 };
 
+const server = {
+  base: 'src/_kit/server/',
+  src: 'src/_kit/server/**/{.*,*.*}'
+};
+
 
 // =============================================================================
 // представления
@@ -150,6 +155,17 @@ lazyRequireTask('clean:assets', './gulp-tasks/clean', {
 
 
 // =============================================================================
+// серверные файлы, сливающиеся в корневую директорию сборки
+// =============================================================================
+
+lazyRequireTask('build:server', './gulp-tasks/build/server', {
+  base: server.base,
+  src: server.src,
+  dist: dist
+});
+
+
+// =============================================================================
 // очистка всей сборки
 // =============================================================================
 
@@ -196,6 +212,11 @@ gulp.task('watch', function() {
         delete cache.caches['assets'][path.resolve(filepath)];
       });
 
+  gulp.watch(server.src, gulp.series('build:server'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['server'][path.resolve(filepath)];
+      });
+
 });
 
 
@@ -204,7 +225,8 @@ gulp.task('watch', function() {
 // =============================================================================
 
 gulp.task('default', gulp.series('clean', 'build:views', 'build:css',
-    'build:js', 'build:img', 'build:svg', 'build:assets', 'watch'));
+    'build:js', 'build:img', 'build:svg', 'build:assets', 'build:server',
+    'watch'));
 
 gulp.task('build', gulp.series('clean', 'build:views', 'build:css',
-    'build:js', 'build:img', 'build:svg', 'build:assets'));
+    'build:js', 'build:img', 'build:svg', 'build:assets', 'build:server'));
