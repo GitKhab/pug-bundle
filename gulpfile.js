@@ -58,6 +58,11 @@ const assets = {
   dist: 'dist/_kit/assets/'
 };
 
+const server = {
+  base: 'src/_kit/server/',
+  src: 'src/_kit/server/**/{.*,*.*}'
+};
+
 
 // =============================================================================
 // представления
