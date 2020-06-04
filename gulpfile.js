@@ -212,6 +212,11 @@ gulp.task('watch', function() {
         delete cache.caches['assets'][path.resolve(filepath)];
       });
 
+  gulp.watch(server.src, gulp.series('build:server'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['server'][path.resolve(filepath)];
+      });
+
 });
 
 
