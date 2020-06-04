@@ -144,6 +144,10 @@ lazyRequireTask('build:assets', './gulp-tasks/build/assets', {
   dist: dist
 });
 
+lazyRequireTask('clean:assets', './gulp-tasks/clean', {
+  clean: assets.dist
+});
+
 
 // =============================================================================
 // очистка всей сборки
