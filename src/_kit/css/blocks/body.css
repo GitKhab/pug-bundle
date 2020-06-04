@@ -1,0 +1,21 @@
+/* =============================================================================
+ * body
+ * ========================================================================== */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 320px;
+  margin: 0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
+
+/*  body__inner
+ * ========================================================================== */
+
+.body__inner {
+  flex-grow: 1;
+  flex-shrink: 0;
+}

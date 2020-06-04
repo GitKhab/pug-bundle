@@ -1,0 +1,8 @@
+# Окружение JetBrains
+.idea/
+
+# Окружение Node
+node_modules/
+
+# Результат сборки
+/dist/
