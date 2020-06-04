@@ -53,6 +53,11 @@ const svg = {
   dist: 'dist/_kit/svg/'
 };
 
+const assets = {
+  src: 'src/_kit/assets/**/{.*,*.*}',
+  dist: 'dist/_kit/assets/'
+};
+
 
 // =============================================================================
 // представления
@@ -130,6 +135,21 @@ lazyRequireTask('clean:svg', './gulp-tasks/clean', {
 
 
 // =============================================================================
+// вспомогательные файлы, не требующие обработки
+// =============================================================================
+
+lazyRequireTask('build:assets', './gulp-tasks/build/assets', {
+  base: src,
+  src: assets.src,
+  dist: dist
+});
+
+lazyRequireTask('clean:assets', './gulp-tasks/clean', {
+  clean: assets.dist
+});
+
+
+// =============================================================================
 // очистка всей сборки
 // =============================================================================
 
@@ -171,6 +191,11 @@ gulp.task('watch', function() {
         delete cache.caches['svg'][path.resolve(filepath)];
       });
 
+  gulp.watch(assets.src, gulp.series('build:assets'))
+      .on('unlink', function(filepath) {
+        delete cache.caches['assets'][path.resolve(filepath)];
+      });
+
 });
 
 
@@ -179,7 +204,7 @@ gulp.task('watch', function() {
 // =============================================================================
 
 gulp.task('default', gulp.series('clean', 'build:views', 'build:css',
-    'build:js', 'build:img', 'build:svg', 'watch'));
+    'build:js', 'build:img', 'build:svg', 'build:assets', 'watch'));
 
 gulp.task('build', gulp.series('clean', 'build:views', 'build:css',
-    'build:js', 'build:img', 'build:svg'));
+    'build:js', 'build:img', 'build:svg', 'build:assets'));
