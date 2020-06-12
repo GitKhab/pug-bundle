@@ -34,6 +34,7 @@ const views = {
 };
 
 const css = {
+  base: 'src/_kit/css/',
   src: 'src/_kit/css/**/*.styl',
   dist: 'dist/_kit/css/'
 };
@@ -84,7 +85,7 @@ lazyRequireTask('clean:views', './gulp-tasks/clean', {
 // =============================================================================
 
 lazyRequireTask('build:css', './gulp-tasks/build/css', {
-  base: src,
+  base: css.base,
   src: css.src,
   dist: css.dist
 });
