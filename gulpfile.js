@@ -185,10 +185,7 @@ gulp.task('watch', function() {
     views.templates
   ], gulp.series('build:views'));
 
-  gulp.watch(css.src, gulp.series('build:css'))
-      .on('unlink', function(filepath) {
-        remember.forget('css', path.resolve(filepath));
-      });
+  gulp.watch(css.src, gulp.series('build:css'));
 
   gulp.watch(js.src, gulp.series('build:js'))
       .on('unlink', function(filepath) {
