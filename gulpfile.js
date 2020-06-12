@@ -187,7 +187,6 @@ gulp.task('watch', function() {
 
   gulp.watch(css.src, gulp.series('build:css'))
       .on('unlink', function(filepath) {
-        delete cache.caches['css'][path.resolve(filepath)];
         remember.forget('css', path.resolve(filepath));
       });
 

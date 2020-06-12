@@ -2,7 +2,6 @@
 
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
-const cache = require('gulp-cached');
 const gulpIf = require('gulp-if');
 const argv = require('yargs').argv;
 const remember = require('gulp-remember');
@@ -18,7 +17,6 @@ module.exports = function(options) {
   return function() {
     return gulp.src(options.src, {base: options.base})
         .pipe(sourcemaps.init())
-        .pipe(cache('css'))
         .pipe(remember('css'))
         .pipe(gulpIf(argv.prod, concatPreset.prod, concatPreset.dev))
         .pipe(sourcemaps.write())
