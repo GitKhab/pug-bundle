@@ -15,13 +15,13 @@ module.exports = function(options) {
     prod: stylus({compress: true})
   };
 
-  const mainStylesheets = 'src/_kit/css/styles.css';
+  const cssDeclaration = 'src/_kit/css/declaration/styles.css';
 
   return function() {
     return gulp.src(options.src, {base: options.base})
         .pipe(sourcemaps.init())
         .pipe(gulpIf(argv.prod, stylusPreset.prod, stylusPreset.dev))
-        .pipe(filter(mainStylesheets))
+        .pipe(filter(cssDeclaration))
         .pipe(autoprefixer())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(options.dist));

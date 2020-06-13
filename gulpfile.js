@@ -34,7 +34,7 @@ const views = {
 };
 
 const css = {
-  base: 'src/_kit/css/',
+  base: 'src/_kit/css/declaration/',
   src: 'src/_kit/css/**/*.styl',
   dist: 'dist/_kit/css/'
 };
