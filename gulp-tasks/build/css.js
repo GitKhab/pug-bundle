@@ -2,39 +2,27 @@
 
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
-const cache = require('gulp-cached');
 const gulpIf = require('gulp-if');
 const argv = require('yargs').argv;
-const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const remember = require('gulp-remember');
-const concat = require('gulp-concat');
+const autoprefixer = require('gulp-autoprefixer');
+const stylus = require('gulp-stylus');
+const filter = require('gulp-filter');
 
 module.exports = function(options) {
 
-  const postcssPreset = {
-    dev: postcss([
-      autoprefixer()
-    ]),
-    prod: postcss([
-      autoprefixer(),
-      cssnano()
-    ])
+  const stylusPreset = {
+    dev: stylus(),
+    prod: stylus({compress: true})
   };
 
-  const concatPreset = {
-    dev: concat('styles.css'),
-    prod: concat('styles.css', {newLine: ''})
-  };
+  const cssDeclaration = 'src/_kit/css/declaration/styles.css';
 
   return function() {
     return gulp.src(options.src, {base: options.base})
         .pipe(sourcemaps.init())
-        .pipe(cache('css'))
-        .pipe(gulpIf(argv.prod, postcssPreset.prod, postcssPreset.dev))
-        .pipe(remember('css'))
-        .pipe(gulpIf(argv.prod, concatPreset.prod, concatPreset.dev))
+        .pipe(gulpIf(argv.prod, stylusPreset.prod, stylusPreset.dev))
+        .pipe(filter(cssDeclaration))
+        .pipe(autoprefixer())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(options.dist));
   };
