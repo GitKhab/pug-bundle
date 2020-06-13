@@ -34,7 +34,8 @@ const views = {
 };
 
 const css = {
-  src: 'src/_kit/css/**/*.css',
+  base: 'src/_kit/css/declaration/',
+  src: 'src/_kit/css/**/*.styl',
   dist: 'dist/_kit/css/'
 };
 
@@ -84,7 +85,7 @@ lazyRequireTask('clean:views', './gulp-tasks/clean', {
 // =============================================================================
 
 lazyRequireTask('build:css', './gulp-tasks/build/css', {
-  base: src,
+  base: css.base,
   src: css.src,
   dist: css.dist
 });
@@ -185,11 +186,7 @@ gulp.task('watch', function() {
     views.templates
   ], gulp.series('build:views'));
 
-  gulp.watch(css.src, gulp.series('build:css'))
-      .on('unlink', function(filepath) {
-        delete cache.caches['css'][path.resolve(filepath)];
-        remember.forget('css', path.resolve(filepath));
-      });
+  gulp.watch(css.src, gulp.series('build:css'));
 
   gulp.watch(js.src, gulp.series('build:js'))
       .on('unlink', function(filepath) {
