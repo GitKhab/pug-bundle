@@ -10,17 +10,12 @@ const filter = require('gulp-filter');
 
 module.exports = function(options) {
 
-  const stylusPreset = {
-    dev: stylus(),
-    prod: stylus({compress: true})
-  };
-
   const cssDeclaration = 'src/_kit/css/declaration/styles.css';
 
   return function() {
     return gulp.src(options.src, {base: options.base})
         .pipe(sourcemaps.init())
-        .pipe(gulpIf(argv.prod, stylusPreset.prod, stylusPreset.dev))
+        .pipe(stylus())
         .pipe(filter(cssDeclaration))
         .pipe(autoprefixer())
         .pipe(sourcemaps.write())
