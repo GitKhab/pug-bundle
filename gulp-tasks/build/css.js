@@ -15,7 +15,7 @@ module.exports = function(options) {
   return function() {
     return gulp.src(options.src, {base: options.base})
         .pipe(sourcemaps.init())
-        .pipe(stylus())
+        .pipe(stylus({'include css': true}))
         .pipe(filter(cssDeclaration))
         .pipe(autoprefixer())
         .pipe(sourcemaps.write())
