@@ -1,0 +1,12 @@
+/* =============================================================================
+ * 400
+ * ========================================================================== */
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+  url('../assets/fonts/roboto/roboto-400.woff2') format('woff2'),
+  url('../assets/fonts/roboto/roboto-400.woff') format('woff');
+}
