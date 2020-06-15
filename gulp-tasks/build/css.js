@@ -7,21 +7,23 @@ const argv = require('yargs').argv;
 const autoprefixer = require('gulp-autoprefixer');
 const stylus = require('gulp-stylus');
 const filter = require('gulp-filter');
+const cleanCss = require('gulp-clean-css');
 
 module.exports = function(options) {
 
-  const stylusPreset = {
-    dev: stylus(),
-    prod: stylus({compress: true})
-  };
+  const cleanCssPreset = {
+    dev: cleanCss({format: 'beautify'}),
+    prod: cleanCss()
+  }
 
   const cssDeclaration = 'src/_kit/css/declaration/styles.css';
 
   return function() {
     return gulp.src(options.src, {base: options.base})
         .pipe(sourcemaps.init())
-        .pipe(gulpIf(argv.prod, stylusPreset.prod, stylusPreset.dev))
+        .pipe(stylus({'include css': true}))
         .pipe(filter(cssDeclaration))
+        .pipe(gulpIf(argv.prod, cleanCssPreset.prod, cleanCssPreset.dev))
         .pipe(autoprefixer())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(options.dist));

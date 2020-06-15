@@ -1,6 +1,6 @@
 {
   "name": "pug-bundle",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Build system with Pug template engine",
   "bugs": {
     "url": "https://github.com/GitKhab/pug-bundle/issues"
@@ -14,6 +14,7 @@
     "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",
     "gulp-cached": "^1.1.1",
+    "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^4.0.0",
     "gulp-filter": "^6.0.0",
