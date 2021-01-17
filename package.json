@@ -1,6 +1,6 @@
 {
   "name": "pug-bundle",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Build system with Pug template engine",
   "bugs": {
     "url": "https://github.com/GitKhab/pug-bundle/issues"
